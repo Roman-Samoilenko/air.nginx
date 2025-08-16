@@ -2,13 +2,16 @@ version: '3.8'
 
 services:
   nginx:
-    build: .
-    container_name: air-nginx
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: air-nginx-openresty
     network_mode: host
     volumes:
-      - ./static:/usr/share/nginx/static  # монтирование статики
+      # Монтирование статики для аутентифицированных пользователей
+      - ./static_authenticated:/usr/share/nginx/static_authenticated:ro
+      # Монтирование публичной статики
+      - ./static_public:/usr/share/nginx/static_public:ro
+      # Логи
+      - ./logs:/var/log/nginx
     restart: unless-stopped
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost"]
-      interval: 30s
-      timeout: 5s

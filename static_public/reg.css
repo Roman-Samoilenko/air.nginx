@@ -85,7 +85,7 @@ body::before {
             0 0 50px rgba(0, 255, 0, 0.25),
             inset 0 1px 0 rgba(0, 255, 0, 0.25),
             0 0 100px rgba(0, 255, 0, 0.15);
-    transform: translateY(-2px);
+    transform: translateY(0px);
 }
 
 .card:hover::after {

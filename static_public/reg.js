@@ -21,7 +21,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (response.ok) {
                 const result = await response.json();
-                showAlert('success', result.message || 'Регистрация успешна!');
+                showAlert('success', result.message || 'Вход успешен!');
+                setTimeout(() => {
+                    window.location.href = '/';
+                }, 1500);
             } else {
                 const error = await response.json();
                 showAlert('error', error.message || 'Ошибка регистрации');
@@ -48,15 +51,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const inputs = document.querySelectorAll('input');
 
     inputs.forEach(input => {
-        // Эффект фокуса
-        input.addEventListener('focus', function() {
-            this.parentElement.style.transform = 'scale(1.01)';
-            this.parentElement.style.transition = 'transform 0.2s ease';
-        });
-
-        input.addEventListener('blur', function() {
-            this.parentElement.style.transform = 'scale(1)';
-        });
 
         // Эффект набора текста
         input.addEventListener('input', function() {
@@ -68,16 +62,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Анимация появления формы
-    const card = document.querySelector('.card');
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(20px)';
-
-    setTimeout(() => {
-        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        card.style.opacity = '1';
-        card.style.transform = 'translateY(0)';
-    }, 100);
 
     // Плавная анимация кнопки
     const submitBtn = document.querySelector('.submit-btn');
