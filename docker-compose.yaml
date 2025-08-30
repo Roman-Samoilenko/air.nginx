@@ -8,10 +8,6 @@ services:
     container_name: air-nginx-openresty
     network_mode: host
     volumes:
-      # Монтирование статики для аутентифицированных пользователей
-      - ./static_authenticated:/usr/share/nginx/static_authenticated:ro
-      # Монтирование публичной статики
       - ./static_public:/usr/share/nginx/static_public:ro
-      # Логи
       - ./logs:/var/log/nginx
     restart: unless-stopped

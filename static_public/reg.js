@@ -1,4 +1,3 @@
-// Оригинальная логика формы
 document.addEventListener('DOMContentLoaded', function() {
     const registrationForm = document.getElementById('registrationForm');
 
@@ -47,12 +46,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 3000);
     }
 
-    // Простые эффекты для улучшения UX
     const inputs = document.querySelectorAll('input');
 
     inputs.forEach(input => {
 
-        // Эффект набора текста
         input.addEventListener('input', function() {
             if (this.value.length > 0) {
                 this.style.boxShadow = '0 0 15px rgba(0, 255, 0, 0.3)';
@@ -62,8 +59,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-
-    // Плавная анимация кнопки
     const submitBtn = document.querySelector('.submit-btn');
     submitBtn.addEventListener('click', function() {
         this.style.transform = 'scale(0.98)';
