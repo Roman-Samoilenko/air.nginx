@@ -6,8 +6,17 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: air-nginx-openresty
-    network_mode: host
+    networks:
+      - air-network
+    ports:
+      - "7000:7000"
     volumes:
       - ./static_public:/usr/share/nginx/static_public:ro
       - ./logs:/var/log/nginx
+    depends_on:
+      - auth
     restart: unless-stopped
+
+networks:
+  air-network:
+    external: true
