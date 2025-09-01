@@ -13,8 +13,6 @@ services:
     volumes:
       - ./static_public:/usr/share/nginx/static_public:ro
       - ./logs:/var/log/nginx
-    depends_on:
-      - auth
     restart: unless-stopped
 
 networks:
